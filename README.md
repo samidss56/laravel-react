@@ -1,7 +1,7 @@
-<p align="center">
-<a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a>
-<a href="https://react.dev/" target="_blank"><img src="https://w7.pngwing.com/pngs/452/495/png-transparent-react-javascript-angularjs-ionic-github-text-logo-symmetry-thumbnail.png" width="400" alt="React Logo"></a>
-<a href="https://tailwindcss.com" target="_blank"><img src="https://w7.pngwing.com/pngs/293/485/png-transparent-tailwind-css-hd-logo.png" width="400" alt="Tailwind Logo"></a>
+<div align="center">
+<a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="200" alt="Laravel Logo"></a>
+<a href="https://react.dev/" target="_blank"><img src="https://www.vectorlogo.zone/logos/reactjs/reactjs-ar21.svg"  height="100" alt="React Logo"></a>
+<a href="https://tailwindcss.com" target="_blank"><img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-ar21.svg" width="200" alt="Tailwind Logo"></a>
 </p>
 
 <p align="center">
