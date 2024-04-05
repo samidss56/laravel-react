@@ -4,13 +4,12 @@ import Navbar from "@/Components/Navbar";
 import { Head } from "@inertiajs/react";
 
 export default function Homepage(props) {
-    console.log(props);
     return (
         <>
             <Navbar user={props.auth.user} />
-            <div className="flex flex-col justify-center items-center min-h-screen bg-slate-800 p-10 gap-8">
+            <div className="flex flex-col justify-center items-center min-h-screen bg-[#f3f4f6] p-10 gap-8">
                 <Head title={props.title} />
-                <h1 className="text-3xl font-bold text-white">
+                <h1 className="text-3xl font-bold text-gray-800">
                     {props.description}
                 </h1>
                 <div className="grid xs:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-8">

@@ -10,6 +10,7 @@ export default function Dashboard(props) {
     const [description, setDescription] = useState("");
     const [category, setCategory] = useState("");
     const [isNotif, setisNotif] = useState(false);
+    const [isDelete, setIsDelete] = useState(false);
 
     const handleSubmit = () => {
         const data = {
@@ -18,10 +19,20 @@ export default function Dashboard(props) {
             category,
         };
         router.post("/news", data);
-        setisNotif(true);
+        setisNotif(
+            true,
+            setTimeout(() => setisNotif(false), 5000)
+        );
         setTitle("");
         setDescription("");
         setCategory("");
+    };
+
+    const handleDelete = () => {
+        setIsDelete(
+            true,
+            setTimeout(() => setIsDelete(false), 5000)
+        );
     };
 
     useEffect(() => {
@@ -45,12 +56,12 @@ export default function Dashboard(props) {
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 xs:px-4">
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                        <div className="p-6 text-gray-900 flex flex-col gap-4">
-                            <h1 className="text-2xl font-semibold">Add News</h1>
+                        <div className="p-6 flex flex-col gap-4">
+                            <h1 className="text-2xl font-semibold text-gray-800">Add News</h1>
                             {isNotif && (
                                 <div
                                     role="alert"
-                                    className="alert alert-success"
+                                    className="alert alert-success transition-all duration-300"
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -121,26 +132,46 @@ export default function Dashboard(props) {
                             </button>
                         </div>
                     </div>
+                    {isDelete && (
+                        <div role="alert" className="alert alert-success my-3">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="stroke-current shrink-0 h-6 w-6 text-white"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
+                            </svg>
+                            <span className="text-white">
+                                {props.flash.message}
+                            </span>
+                        </div>
+                    )}
                     <div className="grid md:grid-cols-2 xs:grid-cols-1 mt-5 gap-4">
                         {props.myNews && props.myNews.length > 0 ? (
                             props.myNews.map((news, index) => {
                                 return (
                                     <div
                                         key={index}
-                                        className="card w-full bg-base-100 shadow-xl flex flex-col justify-between"
+                                        className="card w-full bg-white shadow-xl flex flex-col justify-between"
                                     >
                                         <div className="card-body flex flex-col justify-between">
                                             <div className="flex flex-col gap-4">
-                                                <h2 className="card-title">
+                                                <h2 className="card-title text-gray-800">
                                                     {news.title}
                                                     <div className="badge badge-secondary">
                                                         NEW
                                                     </div>
                                                 </h2>
-                                                <p>{news.description}</p>
+                                                <p className="text-gray-800">{news.description}</p>
                                             </div>
                                             <div className="card-actions flex justify-between">
-                                                <div className="badge badge-outline p-4 font-semibold">
+                                                <div className="badge badge-outline p-4 font-semibold text-gray-800">
                                                     {news.category}
                                                 </div>
                                                 <div className="flex gap-2">
@@ -158,9 +189,23 @@ export default function Dashboard(props) {
                                                             Edit
                                                         </Link>
                                                     </div>
-                                                    <button className="h-[34px] w-[80px] rounded-full bg-red-700 font-semibold p-1 text-white">
-                                                        <Link>Delete</Link>
-                                                    </button>
+                                                    <div className="h-[34px] w-[80px] rounded-full bg-red-700 font-semibold p-1 text-white text-center">
+                                                        <Link
+                                                            href={route(
+                                                                "delete.news"
+                                                            )}
+                                                            method="post"
+                                                            data={{
+                                                                id: news.id,
+                                                            }}
+                                                            as="button"
+                                                            onClick={() =>
+                                                                handleDelete()
+                                                            }
+                                                        >
+                                                            Delete
+                                                        </Link>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

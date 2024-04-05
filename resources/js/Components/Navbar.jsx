@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "@inertiajs/react";
 
 const Navbar = ({ user }) => {
-    console.log(user);
     return (
         <div className="navbar bg-white sticky top-0 z-50 shadow-lg">
             <div className="flex-1">
@@ -13,7 +12,7 @@ const Navbar = ({ user }) => {
                     <input
                         type="text"
                         placeholder="Search"
-                        className="input input-bordered w-24 md:w-auto bg-white"
+                        className="input input-bordered w-24 md:w-auto bg-white rounded-full"
                     />
                 </div>
                 <div className="dropdown dropdown-end">
@@ -31,7 +30,7 @@ const Navbar = ({ user }) => {
                     </div>
                     <ul
                         tabIndex={0}
-                        className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+                        className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content rounded-box w-52 bg-white text-slate-700"
                     >
                         {!user ? (
                             <>

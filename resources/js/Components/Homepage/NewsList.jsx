@@ -5,7 +5,7 @@ const isNews = (news) => {
         return (
             <div
                 key={index}
-                className="card w-full bg-base-100 shadow-xl hover:scale-[1.05] transition-all duration-300 cursor-pointer flex flex-col justify-between"
+                className="card w-full bg-white shadow-xl hover:scale-[1.05] transition-all duration-300 cursor-pointer flex flex-col justify-between"
             >
                 <figure>
                     <img
@@ -15,11 +15,11 @@ const isNews = (news) => {
                 </figure>
                 <div className="card-body flex flex-col justify-between">
                     <div className="flex flex-col gap-4">
-                        <h2 className="card-title">
+                        <h2 className="card-title text-gray-800">
                             {data.title}
                             <div className="badge badge-secondary">NEW</div>
                         </h2>
-                        <p>{data.description}</p>
+                        <p className="">{data.description}</p>
                         <p className="font-medium">{data.category}</p>
                     </div>
                     <div className="card-actions justify-end mt-3">

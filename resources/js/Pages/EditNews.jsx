@@ -22,8 +22,6 @@ export default function EditNews(props) {
         setCategory("");
     };
 
-    console.log(props);
-
     return (
         <>
             <Navbar user={props.auth.user} />
