@@ -18,6 +18,10 @@ export default {
             screens: {
                 xs: "380px",
             },
+            colors: {
+                "dark-gray": "#222831",
+                "light-gray": "#31363F",
+            },
         },
     },
 
