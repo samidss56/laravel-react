@@ -16,7 +16,7 @@ export default {
                 sans: ["Poppins", ...defaultTheme.fontFamily.sans],
             },
             screens: {
-                xs: "400px",
+                xs: "380px",
             },
         },
     },

@@ -1,17 +1,19 @@
 import React from "react";
+import { Link } from "@inertiajs/react";
 
-const Navbar = () => {
+const Navbar = ({ user }) => {
+    console.log(user);
     return (
-        <div className="navbar bg-base-100 sticky top-0 z-50">
+        <div className="navbar bg-white sticky top-0 z-50 shadow-lg">
             <div className="flex-1">
-                <a className="btn btn-ghost text-xl">News Portal</a>
+                <a className="btn btn-ghost text-xl text-gray-800">News Portal</a>
             </div>
             <div className="flex-none gap-2">
-                <div className="form-control">
+                <div className="form-control ">
                     <input
                         type="text"
                         placeholder="Search"
-                        className="input input-bordered w-24 md:w-auto"
+                        className="input input-bordered w-24 md:w-auto bg-white"
                     />
                 </div>
                 <div className="dropdown dropdown-end">
@@ -31,18 +33,45 @@ const Navbar = () => {
                         tabIndex={0}
                         className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
                     >
-                        <li>
-                            <a className="justify-between">
-                                Dashboard
-                                <span className="badge">New</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a>Settings</a>
-                        </li>
-                        <li>
-                            <a>Logout</a>
-                        </li>
+                        {!user ? (
+                            <>
+                                <li>
+                                    <Link href={route("login")} as="button">
+                                        Login
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href={route("register")} as="button">
+                                        Register
+                                    </Link>
+                                </li>
+                            </>
+                        ) : (
+                            <>
+                                <li>
+                                    <Link
+                                        href={route("dashboard")}
+                                        as="button"
+                                        className="justify-between"
+                                    >
+                                        Dashboard
+                                        <span className="badge">New</span>
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link as="button">Profile</Link>
+                                </li>
+                                <li>
+                                    <Link
+                                        href={route("logout")}
+                                        method="post"
+                                        as="button"
+                                    >
+                                        Logout
+                                    </Link>
+                                </li>
+                            </>
+                        )}
                     </ul>
                 </div>
             </div>
