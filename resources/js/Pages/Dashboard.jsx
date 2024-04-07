@@ -5,6 +5,7 @@ import { Head, Link } from "@inertiajs/react";
 import { useState, useEffect } from "react";
 import { router } from "@inertiajs/react";
 import MyNews from "@/Components/Dashboard/MyNews";
+import PrimaryButton from "@/Components/PrimaryButton";
 
 export default function Dashboard(props) {
     const [title, setTitle] = useState("");
@@ -39,7 +40,7 @@ export default function Dashboard(props) {
         <AuthenticatedLayout
             user={props.auth.user}
             header={
-                <h2 className="font-semibold text-xl text-gray-800 leading-tight">
+                <h2 className="font-semibold text-xl text-gray-800 dark:text-white leading-tight">
                     My News
                 </h2>
             }
@@ -48,9 +49,9 @@ export default function Dashboard(props) {
 
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 xs:px-4">
-                    <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div className="bg-white dark:bg-dark-gray overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 flex flex-col gap-4">
-                            <h1 className="text-2xl font-semibold text-gray-800">
+                            <h1 className="text-2xl font-semibold text-gray-800 dark:text-white">
                                 Add News
                             </h1>
                             {isNotif && (
@@ -118,13 +119,13 @@ export default function Dashboard(props) {
                                 value={category}
                                 autoComplete="category"
                             />
-                            <button
+                            <PrimaryButton
                                 onClick={() => handleSubmit()}
                                 type="submit"
                                 className="btn w-28 text-slate-100"
                             >
                                 Post News
-                            </button>
+                            </PrimaryButton>
                         </div>
                     </div>
                     <MyNews myNews={props.myNews} />

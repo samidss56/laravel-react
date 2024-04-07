@@ -1,7 +1,23 @@
-export default function InputLabel({ value, className = '', children, ...props }) {
+import { useDarkMode } from "@/Contexts/DarkMode";
+
+export default function InputLabel({
+    value,
+    className = "",
+    children,
+    ...props
+}) {
+    const { darkMode } = useDarkMode();
+
     return (
-        <label {...props} className={`block font-medium text-sm text-gray-700 ` + className}>
-            {value ? value : children}
-        </label>
+        <div className={`${darkMode && "dark"}`}>
+            <label
+                {...props}
+                className={
+                    `block font-medium text-sm text-gray-700 dark:text-white ` + className
+                }
+            >
+                {value ? value : children}
+            </label>
+        </div>
     );
 }

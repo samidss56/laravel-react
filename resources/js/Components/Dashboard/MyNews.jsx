@@ -37,22 +37,22 @@ const MyNews = ({ myNews }) => {
                         return (
                             <div
                                 key={index}
-                                className="card w-full bg-white shadow-xl flex flex-col justify-between"
+                                className="card w-full bg-white dark:bg-dark-gray shadow-xl flex flex-col justify-between"
                             >
                                 <div className="card-body flex flex-col justify-between">
                                     <div className="flex flex-col gap-4">
-                                        <h2 className="card-title text-gray-800">
+                                        <h2 className="card-title text-gray-800 dark:text-white">
                                             {news.title}
                                             <div className="badge badge-secondary">
                                                 NEW
                                             </div>
                                         </h2>
-                                        <p className="text-gray-800">
+                                        <p className="text-gray-800 dark:text-white">
                                             {news.description}
                                         </p>
                                     </div>
                                     <div className="card-actions flex justify-between">
-                                        <div className="badge badge-outline p-4 font-semibold text-gray-800">
+                                        <div className="badge badge-outline p-4 font-semibold text-gray-800 dark:text-white">
                                             {news.category}
                                         </div>
                                         <div className="flex gap-2">
