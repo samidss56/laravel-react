@@ -16,7 +16,7 @@ class NewsController extends Controller
     {
         $news = new NewsCollection(News::orderByDesc('created_at')->paginate(8));
         return Inertia::render('Homepage', [
-            "title" => "News Portal",
+            "title" => "Home",
             "description" => "Welcome to the News Portal",
             "news" => $news,
         ]);
@@ -87,5 +87,16 @@ class NewsController extends Controller
         $news = News::find($request->id);
         $news->delete();
         return redirect()->back()->with('message', 'News deleted successfully');
+    }
+
+    public function search(Request $request)
+    {
+        $keyword = $request->input('keyword');
+        $results = News::where('title', 'like', "%$keyword%")->get();
+        return Inertia::render('SearchResults', [
+            'results' => $results,
+            "title" => "Search Results",
+            "description" => "Search Results : " . $keyword,
+        ]);
     }
 }

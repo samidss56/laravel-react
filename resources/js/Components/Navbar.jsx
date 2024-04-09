@@ -1,31 +1,57 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "@inertiajs/react";
-import NavLink from "./NavLink";
 
 const Navbar = ({ user, darkMode, toggleDarkMode }) => {
+    const [searchInput, setSearchInput] = useState("");
+
+    const handleSearch = () => {
+        if (searchInput) {
+            window.location.href = `/search?keyword=${searchInput}`;
+        }
+    };
+
     return (
         <div
             className={`${
                 darkMode && "dark"
-            } navbar bg-white dark:bg-dark-gray sticky top-0 z-50 shadow-lg`}
+            } navbar bg-white dark:bg-dark-gray sticky top-0 py-3 z-50 shadow-lg`}
         >
-            <div className="flex-1">
+            <div className="flex-1 ps-7">
                 <a
                     href="/"
-                    className="btn btn-ghost text-xl text-gray-800 dark:text-white"
+                    className="btn btn-ghost text-xl text-gray-800 dark:text-white xs:hidden sm:flex "
                 >
                     News Portal
                 </a>
             </div>
-            <div className="flex-none gap-2">
-                <div className="form-control ">
+            <div className="flex-none gap-2 justify-center">
+                <label className="input input-bordered flex items-center gap-2 rounded-full bg-white border-light-gray text-dark-gray dark:bg-dark-gray dark:border-white w-full xs:w-3/5 md:w-1/2">
                     <input
                         type="text"
+                        className="border-none p-0 focus:outline-none dark:text-white xs:w-4/5"
                         placeholder="Search"
-                        className="input input-bordered w-32 focus:border-light-gray text-gray-800 border-light-gray md:w-auto bg-white rounded-full dark:bg-transparent dark:border-white dark:text-white dark:focus:border-white"
+                        value={searchInput}
+                        onChange={(e) => setSearchInput(e.target.value)}
                     />
-                </div>
-                <label className="swap swap-rotate mx-2 xs:hidden md:flex">
+                    <button
+                        className="hover:bg-gray-100 dark:hover:bg-light-gray p-2 rounded-lg"
+                        onClick={handleSearch}
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 14 14"
+                            fill="currentColor"
+                            className="w-4 h-4 opacity-70 dark:text-white"
+                        >
+                            <path
+                                fillRule="evenodd"
+                                d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+                                clipRule="evenodd"
+                            />
+                        </svg>
+                    </button>
+                </label>
+                <label className="swap swap-rotate ms-2 xs:hidden md:flex">
                     <button
                         className="theme-controller"
                         onClick={toggleDarkMode}
@@ -103,6 +129,13 @@ const Navbar = ({ user, darkMode, toggleDarkMode }) => {
                         tabIndex={0}
                         className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content rounded-box w-52 bg-white text-gray-800 dark:bg-base-100 dark:text-white"
                     >
+                        <Link
+                            as="button"
+                            href="/"
+                            className="btn btn-ghost text-xl text-gray-800 dark:text-white xs:flex md:hidden justify-start px-2"
+                        >
+                            News Portal
+                        </Link>
                         {!user ? (
                             <>
                                 <li>
