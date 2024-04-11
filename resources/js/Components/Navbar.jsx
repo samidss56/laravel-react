@@ -16,7 +16,7 @@ const Navbar = ({ user, darkMode, toggleDarkMode }) => {
                 darkMode && "dark"
             } navbar bg-white dark:bg-dark-gray sticky top-0 py-3 z-50 shadow-lg`}
         >
-            <div className="flex-1 ps-7">
+            <div className="flex-1 sm:ps-7 xs:ps-0">
                 <a
                     href="/"
                     className="btn btn-ghost text-xl text-gray-800 dark:text-white xs:hidden sm:flex "
