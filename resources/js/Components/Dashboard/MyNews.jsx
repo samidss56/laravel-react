@@ -1,7 +1,7 @@
 import { Link } from "@inertiajs/react";
 import React, { useState } from "react";
 
-const MyNews = ({ myNews }) => {
+const MyNews = ({ myNews, flashMessage }) => {
     const [isDelete, setIsDelete] = useState(false);
 
     const handleDelete = () => {
@@ -28,7 +28,7 @@ const MyNews = ({ myNews }) => {
                             d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                         />
                     </svg>
-                    <span className="text-white">{props.flash.message}</span>
+                    <span className="text-white">{flashMessage}</span>
                 </div>
             )}
             <div className="grid md:grid-cols-2 xs:grid-cols-1 mt-5 gap-4">

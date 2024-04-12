@@ -128,7 +128,10 @@ export default function Dashboard(props) {
                             </PrimaryButton>
                         </div>
                     </div>
-                    <MyNews myNews={props.myNews} />
+                    <MyNews
+                        myNews={props.myNews}
+                        flashMessage={props.flash.message}
+                    />
                 </div>
             </div>
         </AuthenticatedLayout>
