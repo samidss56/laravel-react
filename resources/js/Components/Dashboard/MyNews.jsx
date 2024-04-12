@@ -1,8 +1,18 @@
 import { Link } from "@inertiajs/react";
 import React, { useState } from "react";
+import Modal from "../Modal";
 
 const MyNews = ({ myNews, flashMessage }) => {
     const [isDelete, setIsDelete] = useState(false);
+    const [confirmingNewsDeletion, setConfirmingNewsDeletion] = useState(false);
+
+    const confirmNewsDeletion = () => {
+        setConfirmingNewsDeletion(true);
+    };
+
+    const closeModal = () => {
+        setConfirmingNewsDeletion(false);
+    };
 
     const handleDelete = () => {
         setIsDelete(
@@ -12,7 +22,7 @@ const MyNews = ({ myNews, flashMessage }) => {
     };
 
     return (
-        <>
+        <div>
             {isDelete && (
                 <div role="alert" className="alert alert-success my-3">
                     <svg
@@ -68,21 +78,44 @@ const MyNews = ({ myNews, flashMessage }) => {
                                                     Edit
                                                 </Link>
                                             </div>
-                                            <div className="h-[34px] w-[80px] rounded-full bg-red-700 font-semibold p-1 text-white text-center">
-                                                <Link
-                                                    href={route("delete.news")}
-                                                    method="post"
-                                                    data={{
-                                                        id: news.id,
-                                                    }}
-                                                    as="button"
-                                                    onClick={() =>
-                                                        handleDelete()
-                                                    }
-                                                >
-                                                    Delete
-                                                </Link>
+                                            <div
+                                                className="h-[34px] w-[80px] rounded-full bg-red-700 font-semibold p-1 text-white text-center cursor-pointer"
+                                                onClick={confirmNewsDeletion}
+                                            >
+                                                Delete
                                             </div>
+                                            <Modal
+                                                show={confirmingNewsDeletion}
+                                                onClose={closeModal}
+                                            >
+                                                <div className="flex flex-col p-6 gap-6">
+                                                    <h1 className="text-dark-gray dark:text-white text-center">Are you sure you want to delete news <span className="font-bold">"{news.title}"</span>?</h1>
+                                                    <div className="flex justify-center gap-2 px-4">
+                                                        <button
+                                                            onClick={closeModal}
+                                                            className="h-[34px] w-[80px] rounded-full bg-gray-200 font-semibold p-1 text-light-gray text-center"
+                                                        >
+                                                            Cancel
+                                                        </button>
+                                                        <Link
+                                                            href={route(
+                                                                "delete.news"
+                                                            )}
+                                                            method="post"
+                                                            data={{
+                                                                id: news.id,
+                                                            }}
+                                                            as="button"
+                                                            onClick={() =>
+                                                                handleDelete()
+                                                            }
+                                                            className="h-[34px] w-[80px] rounded-full bg-red-700 font-semibold p-1 text-white text-center"
+                                                        >
+                                                            Delete
+                                                        </Link>
+                                                    </div>
+                                                </div>
+                                            </Modal>
                                         </div>
                                     </div>
                                 </div>
@@ -93,7 +126,7 @@ const MyNews = ({ myNews, flashMessage }) => {
                     <p>You don't have any posted news</p>
                 )}
             </div>
-        </>
+        </div>
     );
 };
 

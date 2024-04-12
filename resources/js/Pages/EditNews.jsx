@@ -1,13 +1,16 @@
 import InputLabel from "@/Components/InputLabel";
 import Navbar from "@/Components/Navbar";
+import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
-import { router } from "@inertiajs/react";
+import { useDarkMode } from "@/Contexts/DarkMode";
+import { Head, router } from "@inertiajs/react";
 import { useState } from "react";
 
 export default function EditNews(props) {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [category, setCategory] = useState("");
+    const { darkMode, toggleDarkMode } = useDarkMode();
 
     const handleSubmit = () => {
         const data = {
@@ -23,12 +26,17 @@ export default function EditNews(props) {
     };
 
     return (
-        <>
-            <Navbar user={props.auth.user} />
-            <div className="min-h-screen p-6 bg-white">
-                <div className="card w-full shadow-xl flex flex-col justify-between">
+        <div className={`${darkMode && "dark"}`}>
+            <Head title="Edit News" />
+            <Navbar
+                user={props.auth.user}
+                darkMode={darkMode}
+                toggleDarkMode={toggleDarkMode}
+            />
+            <div className="min-h-screen p-6 bg-gray-100 dark:bg-light-gray">
+                <div className="card w-full shadow-xl flex flex-col justify-between bg-white dark:bg-dark-gray">
                     <div className="px-7 pt-4">
-                        <h1 className="text-xl font-bold text-gray-800">
+                        <h1 className="text-xl font-bold text-gray-800 dark:text-white">
                             Edit News
                         </h1>
                     </div>
@@ -76,17 +84,17 @@ export default function EditNews(props) {
                                 isFocused
                                 autoComplete="category"
                             />
-                            <button
+                            <PrimaryButton
                                 onClick={() => handleSubmit()}
                                 type="submit"
                                 className="btn w-32 text-slate-100"
                             >
                                 Update News
-                            </button>
+                            </PrimaryButton>
                         </div>
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
