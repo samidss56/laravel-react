@@ -20,40 +20,38 @@ const SearchResults = ({ results, auth, title, description }) => {
                 <div className="grid xs:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-8">
                     {results.length > 0 ? (
                         results.map((result, index) => (
-                            <>
-                                <div
-                                    key={index}
-                                    className="card w-full h-full bg-white dark:bg-dark-gray shadow-xl hover:scale-[1.05] transition-all duration-300 cursor-pointer flex flex-col justify-between"
-                                >
-                                    <figure>
-                                        <img
-                                            src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-                                            alt="Shoes"
-                                        />
-                                    </figure>
-                                    <div className="card-body flex flex-col justify-between">
-                                        <div className="flex flex-col gap-4">
-                                            <h2 className="card-title text-gray-800 dark:text-white">
-                                                {result.title}
-                                                <div className="badge badge-secondary">
-                                                    NEW
-                                                </div>
-                                            </h2>
-                                            <p className="text-gray-800 dark:text-white">
-                                                {result.description}
-                                            </p>
-                                            <p className="font-medium text-gray-800 dark:text-white">
-                                                {result.category}
-                                            </p>
-                                        </div>
-                                        <div className="card-actions justify-end mt-3">
-                                            <div className="badge badge-outline p-4 font-semibold text-gray-800 dark:text-white">
-                                                {result.author}
+                            <div
+                                key={index}
+                                className="card w-full h-full bg-white dark:bg-dark-gray shadow-xl hover:scale-[1.05] transition-all duration-300 cursor-pointer flex flex-col justify-between"
+                            >
+                                <figure>
+                                    <img
+                                        src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
+                                        alt="Shoes"
+                                    />
+                                </figure>
+                                <div className="card-body flex flex-col justify-between">
+                                    <div className="flex flex-col gap-4">
+                                        <h2 className="card-title text-gray-800 dark:text-white">
+                                            {result.title}
+                                            <div className="badge badge-secondary">
+                                                NEW
                                             </div>
+                                        </h2>
+                                        <p className="text-gray-800 dark:text-white">
+                                            {result.description}
+                                        </p>
+                                        <p className="font-medium text-gray-800 dark:text-white">
+                                            {result.category}
+                                        </p>
+                                    </div>
+                                    <div className="card-actions justify-end mt-3">
+                                        <div className="badge badge-outline p-4 font-semibold text-gray-800 dark:text-white">
+                                            {result.author}
                                         </div>
                                     </div>
                                 </div>
-                            </>
+                            </div>
                         ))
                     ) : (
                         <h1 className="text-3xl font-bold text-gray-800 dark:text-white">
