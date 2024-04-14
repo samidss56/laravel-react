@@ -51,9 +51,15 @@ export default function Dashboard(props) {
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 xs:px-4">
                     <div className="bg-white dark:bg-dark-gray overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 flex flex-col gap-4">
-                            <h1 className="text-2xl font-semibold text-gray-800 dark:text-white">
-                                Add News
-                            </h1>
+                            <div>
+                                <h1 className="text-xl font-semibold text-gray-800 dark:text-white">
+                                    Add News
+                                </h1>
+                                <p className="mt-1 text-sm text-gray-600 dark:text-gray-200">
+                                    Create your own News and publish it to the
+                                    public
+                                </p>
+                            </div>
                             {isNotif && (
                                 <div
                                     role="alert"
@@ -77,48 +83,53 @@ export default function Dashboard(props) {
                                     </span>
                                 </div>
                             )}
-                            <InputLabel htmlFor="title" value="News Title" />
-                            <TextInput
-                                id="title"
-                                className="mt-1 block w-full"
-                                placeholder="Insert News Title"
-                                onChange={(title) =>
-                                    setTitle(title.target.value)
-                                }
-                                value={title}
-                                required
-                                isFocused
-                                autoComplete="title"
-                            />
-                            <InputLabel
-                                htmlFor="description"
-                                value="News Description"
-                            />
-                            <TextInput
-                                id="description"
-                                className="mt-1 block w-full"
-                                placeholder="Insert News description"
-                                onChange={(description) =>
-                                    setDescription(description.target.value)
-                                }
-                                value={description}
-                                required
-                                autoComplete="description"
-                            />
-                            <InputLabel
-                                htmlFor="category"
-                                value="News Category"
-                            />
-                            <TextInput
-                                id="category"
-                                className="mt-1 block w-full"
-                                placeholder="Insert News Category"
-                                onChange={(category) =>
-                                    setCategory(category.target.value)
-                                }
-                                value={category}
-                                autoComplete="category"
-                            />
+                            <div className="flex flex-col w-full">
+                                <InputLabel
+                                    htmlFor="title"
+                                    value="News Title"
+                                />
+                                <TextInput
+                                    id="title"
+                                    placeholder="Insert News Title"
+                                    className="block w-full"
+                                    onChange={(title) =>
+                                        setTitle(title.target.value)
+                                    }
+                                    value={title}
+                                    required
+                                    isFocused
+                                    autoComplete="title"
+                                />
+                                <InputLabel
+                                    htmlFor="description"
+                                    value="News Description"
+                                />
+                                <TextInput
+                                    id="description"
+                                    placeholder="Insert News description"
+                                    className="block w-full"
+                                    onChange={(description) =>
+                                        setDescription(description.target.value)
+                                    }
+                                    value={description}
+                                    required
+                                    autoComplete="description"
+                                />
+                                <InputLabel
+                                    htmlFor="category"
+                                    value="News Category"
+                                />
+                                <TextInput
+                                    id="category"
+                                    placeholder="Insert News Category"
+                                    className="block w-full"
+                                    onChange={(category) =>
+                                        setCategory(category.target.value)
+                                    }
+                                    value={category}
+                                    autoComplete="category"
+                                />
+                            </div>
                             <PrimaryButton
                                 onClick={() => handleSubmit()}
                                 type="submit"

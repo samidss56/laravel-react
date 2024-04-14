@@ -1,6 +1,12 @@
-import { forwardRef, useEffect, useRef } from 'react';
+import { useDarkMode } from "@/Contexts/DarkMode";
+import { forwardRef, useEffect, useRef } from "react";
 
-export default forwardRef(function TextInput({ type = 'text', className = '', isFocused = false, ...props }, ref) {
+export default forwardRef(function TextInput(
+    { type = "text", className = "", isFocused = false, ...props },
+    ref
+) {
+    const { darkMode } = useDarkMode();
+
     const input = ref ? ref : useRef();
 
     useEffect(() => {
@@ -13,10 +19,10 @@ export default forwardRef(function TextInput({ type = 'text', className = '', is
         <input
             {...props}
             type={type}
-            className={
-                'border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm ' +
-                className
-            }
+            className={`border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-lg mb-2 ${
+                darkMode &&
+                "dark:bg-light-gray dark:text-gray-100 dark:border-gray-600"
+            } ${className}`}
             ref={input}
         />
     );

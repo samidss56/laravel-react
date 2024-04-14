@@ -42,48 +42,53 @@ export default function EditNews(props) {
                     </div>
                     <div className="card-body flex flex-col justify-between">
                         <div className="flex flex-col gap-4">
-                            <InputLabel htmlFor="title" value="News Title" />
-                            <TextInput
-                                id="title"
-                                className="mt-1 block w-full"
-                                onChange={(title) =>
-                                    setTitle(title.target.value)
-                                }
-                                defaultValue={props.myNews.title}
-                                required
-                                isFocused
-                                autoComplete="title"
-                            />
-                            <InputLabel
-                                htmlFor="description"
-                                value="News Description"
-                            />
-                            <TextInput
-                                id="description"
-                                className="mt-1 block w-full"
-                                onChange={(description) =>
-                                    setDescription(description.target.value)
-                                }
-                                defaultValue={props.myNews.description}
-                                required
-                                isFocused
-                                autoComplete="description"
-                            />
-                            <InputLabel
-                                htmlFor="category"
-                                value="News Category"
-                            />
-                            <TextInput
-                                id="category"
-                                className="mt-1 block w-full"
-                                onChange={(category) =>
-                                    setCategory(category.target.value)
-                                }
-                                defaultValue={props.myNews.category}
-                                required
-                                isFocused
-                                autoComplete="category"
-                            />
+                            <div className="flex flex-col w-full">
+                                <InputLabel
+                                    htmlFor="title"
+                                    value="News Title"
+                                />
+                                <TextInput
+                                    id="title"
+                                    className="block w-full"
+                                    onChange={(title) =>
+                                        setTitle(title.target.value)
+                                    }
+                                    defaultValue={props.myNews.title}
+                                    required
+                                    isFocused
+                                    autoComplete="title"
+                                />
+                                <InputLabel
+                                    htmlFor="description"
+                                    value="News Description"
+                                />
+                                <TextInput
+                                    id="description"
+                                    className="block w-full"
+                                    onChange={(description) =>
+                                        setDescription(description.target.value)
+                                    }
+                                    defaultValue={props.myNews.description}
+                                    required
+                                    isFocused
+                                    autoComplete="description"
+                                />
+                                <InputLabel
+                                    htmlFor="category"
+                                    value="News Category"
+                                />
+                                <TextInput
+                                    id="category"
+                                    className="block w-full"
+                                    onChange={(category) =>
+                                        setCategory(category.target.value)
+                                    }
+                                    defaultValue={props.myNews.category}
+                                    required
+                                    isFocused
+                                    autoComplete="category"
+                                />
+                            </div>
                             <PrimaryButton
                                 onClick={() => handleSubmit()}
                                 type="submit"
